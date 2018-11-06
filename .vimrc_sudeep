@@ -1,0 +1,71 @@
+
+set foldlevel=20
+
+"switching buffers
+
+map <F9> :bprevious<CR>
+map <F10> :bnext<CR>
+
+set nu
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Text, tab and indent related
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Use spaces instead of tabs
+" set expandtab
+set noexpandtab
+
+" Be smart when using tabs ;)
+set smarttab
+
+" 1 tab == 4 spaces
+set shiftwidth=4
+set tabstop=4
+
+" Linebreak on 500 characters
+set lbr
+set tw=500
+
+set ai "Auto indent
+set si "Smart indent
+set wrap "Wrap lines
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Files, backups and undo
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Turn backup off, since most stuff is in SVN, git et.c anyway...
+set nobackup
+set nowb
+set noswapfile
+set paste
+set nocscopeverbose
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" use [{ for going to the top of the function block
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" This is for ctags
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+hi Pemnu ctermbg=blue ctermfg=white
+hi PmenuSel ctermbg=yellow ctermfg=black
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" This is for vimdiff
+" https://vi.stackexchange.com/questions/10897/how-do-i-customize-vimdiff-colors
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+hi DiffAdd      gui=none    guifg=NONE          guibg=#bada9f
+hi DiffChange   gui=none    guifg=NONE          guibg=#e5d5ac
+hi DiffDelete   gui=bold    guifg=#ff8080       guibg=#ffb0b0
+hi DiffText     gui=none    guifg=NONE          guibg=#8cbee2
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" This is for displaying function name
+"""""""""""""""""""""""""""""""""""""""""""""""""""""
+fun! ShowFuncName()
+  echohl ModeMsg
+  echo getline(search("^[^ \t#/]\\{2}.*[^:]\s*$", 'bWn'))
+  echohl None
+endfun
+map f :call ShowFuncName() <CR>
+
