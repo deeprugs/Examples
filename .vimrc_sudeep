@@ -1,4 +1,25 @@
 
+set ignorecase
+set incsearch
+set wrapscan
+set paste
+
+"""""""""""""""""""""""""""""""""""""""""""""""
+"To leave vim to $BASH and back.
+"""""""""""""""""""""""""""""""""""""""""""""""
+
+" You can send vim the SIGTSTP signal. You do this by pressing ctrl+z.
+"Vim will get suspended in the background, and you can use the terminal.
+"Type fg in the terminal to resume with vim.
+"Use bg to enable the application to continue
+"running in the background.
+"Bonus tip: This works on nearly all terminal applications. Use bg to enable the application to continue running in the background.
+
+
+" use 'za' in Esc mode for folding code.
+"zo => Open fold
+"zc close the fold.
+set foldmethod=syntax
 set foldlevel=20
 
 "switching buffers
@@ -59,6 +80,22 @@ hi DiffChange   gui=none    guifg=NONE          guibg=#e5d5ac
 hi DiffDelete   gui=bold    guifg=#ff8080       guibg=#ffb0b0
 hi DiffText     gui=none    guifg=NONE          guibg=#8cbee2
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" This is for ctrl+p slowing down
+" https://stackoverflow.com/questions/21346068/slow-performance-on-ctrlp-it-doesnt-work-to-ignore-some-folders
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:ctrlp_cache_dir = $HOME . '/.cache/ctrlp'
+if executable('ag')
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+endif
+
+"https://stackoverflow.com/questions/2169645/vims-autocomplete-is-excruciatingly-slow
+"https://vi.stackexchange.com/questions/11349/ctrl-n-completion-takes-a-long-time-for-scanning-included-file
+
+set complete-=i
+
+
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""
 " This is for displaying function name
 """""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -68,4 +105,12 @@ fun! ShowFuncName()
   echohl None
 endfun
 map f :call ShowFuncName() <CR>
+
+
+" Helpful hints.
+
+" 1)
+" IF .cpp and .h are in the same directory
+" https://stackoverflow.com/questions/17170902/in-vim-how-to-switch-quickly-between-h-and-cpp-files-with-the-same-name
+"                               :e %:r.cpp will solve the problem.
 
