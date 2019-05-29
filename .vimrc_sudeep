@@ -1,4 +1,3 @@
-
 set ignorecase
 set incsearch
 set wrapscan
@@ -75,10 +74,12 @@ hi PmenuSel ctermbg=yellow ctermfg=black
 " This is for vimdiff
 " https://vi.stackexchange.com/questions/10897/how-do-i-customize-vimdiff-colors
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""
-hi DiffAdd      gui=none    guifg=NONE          guibg=#bada9f
-hi DiffChange   gui=none    guifg=NONE          guibg=#e5d5ac
-hi DiffDelete   gui=bold    guifg=#ff8080       guibg=#ffb0b0
-hi DiffText     gui=none    guifg=NONE          guibg=#8cbee2
+"hi DiffAdd      gui=none    guifg=NONE          guibg=#bada9f
+"hi DiffChange   gui=none    guifg=NONE          guibg=#e5d5ac
+"hi DiffDelete   gui=bold    guifg=#ff8080       guibg=#ffb0b0
+"hi DiffText     gui=none    guifg=NONE          guibg=#8cbee2
+
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " This is for ctrl+p slowing down
@@ -93,7 +94,15 @@ endif
 "https://vi.stackexchange.com/questions/11349/ctrl-n-completion-takes-a-long-time-for-scanning-included-file
 
 set complete-=i
+set complete-=u
+set complete-=w
+set complete-=t
+set complete-=b
 
+""""""""""""""""""""""""""""""""""""""""""""""
+" For exploring
+"""""""""""""""""""""""""""""""""""""""""""""
+map <F2> :Explore
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -106,6 +115,14 @@ fun! ShowFuncName()
 endfun
 map f :call ShowFuncName() <CR>
 
+"Attempt to stop using up and down
+noremap <Up> <NOP>
+noremap <Down> <NOP>
+noremap <Left> <NOP>
+noremap <Right> <NOP>
+
+"Close brackets automatically
+
 
 " Helpful hints.
 
@@ -114,3 +131,12 @@ map f :call ShowFuncName() <CR>
 " https://stackoverflow.com/questions/17170902/in-vim-how-to-switch-quickly-between-h-and-cpp-files-with-the-same-name
 "                               :e %:r.cpp will solve the problem.
 
+
+" Ignore some folders and files for CtrlP indexing
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\.git$\|\.yardoc\|public$|log\|tmp$',
+  \ 'file': '\.so$\|\.dat$|\.DS_Store$'
+  \ }
+
+"Fuzzy search
+set rtp+=~/.fzf
