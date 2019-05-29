@@ -138,5 +138,19 @@ let g:ctrlp_custom_ignore = {
   \ 'file': '\.so$\|\.dat$|\.DS_Store$'
   \ }
 
-"Fuzzy search
+"Fuzzy search - FZF.
+
+" FZF requires changes in bashrc as well.....
+
+" .bashrc changes BEGIN
+"export EDITOR=vim
+"alias vi="vim"
+"alias fzf="~/.fzf/bin/fzf"
+"vim_fzf() {
+"vim "$(fzf)"
+"}
+"bind -x '"\C-t": vim_fzf'
+" .bashrc changes END
+
+
 set rtp+=~/.fzf
