@@ -100,10 +100,11 @@ set complete-=t
 set complete-=b
 
 """"""""""""""""""""""""""""""""""""""""""""""
-" For exploring
+" For exploring and for finding files.
 """""""""""""""""""""""""""""""""""""""""""""
 map <F2> :Explore
-
+set path+=** "" Use :find hello_word<tab>
+"" Use :b foo<tab> to match and open the matched foo_bar.cpp
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""
 " This is for displaying function name
@@ -138,19 +139,28 @@ let g:ctrlp_custom_ignore = {
   \ 'file': '\.so$\|\.dat$|\.DS_Store$'
   \ }
 
-"Fuzzy search - FZF.
-
-" FZF requires changes in bashrc as well.....
-
-" .bashrc changes BEGIN
-"export EDITOR=vim
-"alias vi="vim"
-"alias fzf="~/.fzf/bin/fzf"
-"vim_fzf() {
-"vim "$(fzf)"
-"}
-"bind -x '"\C-t": vim_fzf'
-" .bashrc changes END
-
-
+"Fuzzy search
 set rtp+=~/.fzf
+
+" FOr creating scratch buffers
+
+"   :setlocal buftype=nofile
+"   :setlocal bufhidden=hide
+"   :setlocal noswapfile
+
+
+"" A note about vim sessions
+"" https://bocoup.com/blog/sessions-the-vim-feature-you-probably-arent-using
+
+
+set wildmode=full
+
+"https://stackoverflow.com/questions/9065941/how-can-i-change-vim-status-line-color
+hi statusline guibg=White ctermfg=LightCyan  guifg=OrangeRed4 ctermbg=Black
+hi statuslineNc guibg=White ctermfg=LightGrey  guifg=OrangeRed4 ctermbg=DarkGrey
+
+""Regarding whitespaces
+""The following example toggles list, then sets listchars to not display an end-of-line character, and to display > for the first character occupied by a tab, and - for any subsequent characters that the tab may occupy.
+
+"":set list!
+"":set listchars=tab:>-
