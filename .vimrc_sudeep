@@ -164,3 +164,4 @@ hi statuslineNc guibg=White ctermfg=LightGrey  guifg=OrangeRed4 ctermbg=DarkGrey
 
 "":set list!
 "":set listchars=tab:>-
+""" https://superuser.com/questions/1620017/stop-cmd-from-beeping-when-connected-to-linux-terminal-via-ssh
