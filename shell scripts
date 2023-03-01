@@ -1,0 +1,41 @@
+
+##REFRESH ALL THE SUBMODULES
+
+# specify the directory to traverse
+dir=.
+
+# get a list of files and directories in the specified directory
+files=($dir/*)
+
+# loop through the list
+for file in "${files[@]}"; do
+  # check if the file is a directory
+  if [ -d "$file" ]; then
+    # print the directory name
+    echo "$file"
+        cd $file
+        git checkout develop
+        git pull
+        cd ..
+  fi
+done
+
+##BACKUP ALL THE SUBMODULES
+##xpatch.sh
+echo "Creating" ~/patches/`date +%b%d20%y`
+BACKUP_DIR=~/patches/`date +%b%d20%y`
+echo "Use the variable name BACKUP_DIR to access the above directory"
+
+mkdir -p $BACKUP_DIR
+
+for file in `git ls-files -m`
+do
+        y=`pwd`/$file
+        echo $y
+        echo "Copying $y to $BACKUP_DIR"
+        cp $y $BACKUP_DIR
+done
+
+echo "You need to backup untracked files and files not tracked by git"
+
+echo done..!
