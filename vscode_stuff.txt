@@ -14,3 +14,10 @@ Alt + Left
 Ctrl + J for terminal and editor toggle
 
 Ctrl + B for toggling left panel.
+
+#Maximimzing panel add your own key-binding
+#===========================================
+#I have added Ctrl + Shift + A
+
+{ "key": "ctrl+shift+a",    "command": "workbench.action.toggleMaximizedPanel" },
+
