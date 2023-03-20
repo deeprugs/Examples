@@ -1,0 +1,16 @@
+
+Ctrl + P  - The files / references opening.
+
+Ctrl + T Ctags equivalent for finding defn.
+
+Alt + O Toggle between cpp and h files
+
+Ctrl + Shift + O
+
+Alt + Left
+
+... (three dots on the explorer and select) Open Editors
+
+Ctrl + J for terminal and editor toggle
+
+Ctrl + B for toggling left panel.
