@@ -1,0 +1,24 @@
+Sessions
+---------
+tmux ls ==> list all the tmux sessions
+tmux -2 ==> start a new tmux session
+tmux attach -t (session_id) ===> attach to the tmux session specified by the id.
+Ctrl_B + d ===> detach from the session
+
+Windows
+--------
+Ctrl_B + c ==> Create a new tmux window
+Ctrl_B + n ==> Go to the next window cyclically
+
+Panes
+------
+Ctrl_B + % ==> Split vert
+Ctrl_B + " ==> Split horiz
+Ctrl_B + o ==> go between panes
+Ctrl_B + x ==> close the plane
+Ctrl_B + z ==> toggle hiding the pane
+
+# For multi exec we can do this.
+# Add this in ~/.tmux.conf
+# Toggle synchronized panes with Prefix + e
+bind e run-shell 'tmux setw synchronize-panes $( [ "$(tmux show -v synchronize-panes)" = "on" ] && echo off || echo on )'
